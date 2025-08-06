@@ -2,6 +2,8 @@ package dev.marshallBits.breakingBadApi.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +23,26 @@ public class JwtUtil {
                 .withClaim("role", role)
                 .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_DATE))
                 .sign(Algorithm.HMAC256(SECRET));
+    }
+
+    public DecodedJWT validateToken(String token) {
+        try {
+            return JWT.require(Algorithm.HMAC256(SECRET))
+                    .build()
+                    .verify(token);
+        } catch (JWTVerificationException exception) {
+            return null;
+        }
+    }
+
+    public String getUsernameFromToken(String token) {
+        DecodedJWT decodedJWT = validateToken(token);
+        return decodedJWT != null ? decodedJWT.getSubject() : null;
+    }
+
+    public String getRoleFromToken(String token) {
+        DecodedJWT decodedJWT = validateToken(token);
+        return decodedJWT != null ? decodedJWT.getClaim("role").asString() : null;
     }
 
 
