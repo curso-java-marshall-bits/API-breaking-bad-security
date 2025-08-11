@@ -1,7 +1,5 @@
-# API de Breaking Bad 👨‍🔬 Signup
+# API de Breaking Bad 👨‍🔬 Login
 
-Esta es la plantilla base para registrar usuarios con un nuevo endpoint de `signup` conforme a la lección del curso. Utiliza esta estructura para practicar y desarrollar la seguridad en aplicaciones Java.
-En `src/main/resources/data.sql` encontrarás la query para añadir todos los characters a tu base de datos.
-Comprueba también el archivo `src/main/resources/application.properties` para ver la configuración de la base de datos y que concuerde con tu entorno local.
+En esta lección hemos visto cómo implementar un login. El login se realiza cuando un usuario o usuaria ya está registrado en la aplicación. En este caso, se le pide que introduzca su nombre de usuario y contraseña para acceder a su cuenta. Esto devolverá un token que se utilizará para autenticar las peticiones posteriores a la API.
 
 Te mando un abrazo y ¡Sigamos desarrollando! 🫂
