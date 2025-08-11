@@ -1,7 +1,5 @@
-# API de Breaking Bad 👨‍🔬 Signup
+# API de Breaking Bad 👨‍🔬 Validación y gestión de errores
 
-Esta es la plantilla base para registrar usuarios con un nuevo endpoint de `signup` conforme a la lección del curso. Utiliza esta estructura para practicar y desarrollar la seguridad en aplicaciones Java.
-En `src/main/resources/data.sql` encontrarás la query para añadir todos los characters a tu base de datos.
-Comprueba también el archivo `src/main/resources/application.properties` para ver la configuración de la base de datos y que concuerde con tu entorno local.
+En esta lección visto cómo implementar la validación de datos a través de anotaciones en el DTO y cómo mandar los errores al cliente a través de un `@ControllerAdvice`. 
 
 Te mando un abrazo y ¡Sigamos desarrollando! 🫂
