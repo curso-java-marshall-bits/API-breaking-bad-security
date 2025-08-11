@@ -1,7 +1,5 @@
-# API de Breaking Bad 👨‍🔬 Signup
+# API de Breaking Bad 👨‍🔬 Auth filter
 
-Esta es la plantilla base para registrar usuarios con un nuevo endpoint de `signup` conforme a la lección del curso. Utiliza esta estructura para practicar y desarrollar la seguridad en aplicaciones Java.
-En `src/main/resources/data.sql` encontrarás la query para añadir todos los characters a tu base de datos.
-Comprueba también el archivo `src/main/resources/application.properties` para ver la configuración de la base de datos y que concuerde con tu entorno local.
+En esta lección hemos implementado un filtro de autenticación para proteger las rutas de la API. El filtro verifica si el usuario está autenticado y tiene la autorización correcta antes de permitir el acceso a las rutas protegidas.
 
 Te mando un abrazo y ¡Sigamos desarrollando! 🫂
