@@ -1,7 +1,10 @@
-# API de Breaking Bad 👨‍🔬 Signup
+# API de Breaking Bad 👨‍🔬 JWT
 
-Esta es la plantilla base para registrar usuarios con un nuevo endpoint de `signup` conforme a la lección del curso. Utiliza esta estructura para practicar y desarrollar la seguridad en aplicaciones Java.
-En `src/main/resources/data.sql` encontrarás la query para añadir todos los characters a tu base de datos.
-Comprueba también el archivo `src/main/resources/application.properties` para ver la configuración de la base de datos y que concuerde con tu entorno local.
+En esta lección hemos visto cómo generar un token JWT. 
+El token consta de tres partes:
+1. Header: Contiene información sobre el tipo de token y el algoritmo de firma.
+2. Payload: Contiene los datos que queremos transmitir, como el ID del usuario.
+3. Signature: Es la firma del token, que se genera combinando el header y el payload con una clave secreta.
+Puedes ver tus tokens decodificados en [jwt.io](https://jwt.io/).
 
 Te mando un abrazo y ¡Sigamos desarrollando! 🫂
