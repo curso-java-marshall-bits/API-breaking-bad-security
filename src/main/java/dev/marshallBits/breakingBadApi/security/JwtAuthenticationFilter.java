@@ -1,5 +1,6 @@
 package dev.marshallBits.breakingBadApi.security;
 
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,18 +31,24 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
 
         if (token != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            String username = jwtUtil.getUsernameFromToken(token);
-            String role = jwtUtil.getRoleFromToken(token);
+            try {
+                String username = jwtUtil.getUsernameFromToken(token);
+                String role = jwtUtil.getRoleFromToken(token);
 
-            // creando la info para generar el contexto y que spring security sepa QUIEN hace la petición
-            // Y QUÉ PUEDE HACER
-            UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-                    username,
-                    null,
-                    Collections.singletonList(new SimpleGrantedAuthority(role))
-            );
+                // creando la info para generar el contexto y que spring security sepa QUIEN hace la petición
+                // Y QUÉ PUEDE HACER
+                UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
+                        username,
+                        null,
+                        Collections.singletonList(new SimpleGrantedAuthority(role))
+                );
 
-            SecurityContextHolder.getContext().setAuthentication(authToken);
+                SecurityContextHolder.getContext().setAuthentication(authToken);
+            }catch (TokenExpiredException exception){
+                response.setStatus(401);
+                response.getWriter().write("Tu sesión ha caducado, debes volver a hacer el login");
+                return;
+            }
         }
 
         // pasamos al siguiente filtro, si no hay miraremos en el SecurityConfig

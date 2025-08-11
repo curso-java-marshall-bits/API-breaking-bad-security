@@ -4,6 +4,7 @@ import dev.marshallBits.breakingBadApi.dto.CreateUserDTO;
 import dev.marshallBits.breakingBadApi.dto.LoginResponseDTO;
 import dev.marshallBits.breakingBadApi.models.User;
 import dev.marshallBits.breakingBadApi.services.UserServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class UserAuthController {
 
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.CREATED)
-    public User signup(@RequestBody CreateUserDTO user){
+    public User signup(@RequestBody @Valid CreateUserDTO user){
         return userService.registerUser(user);
     }
 
